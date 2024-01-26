@@ -28,6 +28,13 @@ void insertAtTail(Node* &head,int val){
     temp->next=n;
 }
 
+ void insertAtHead(Node* &head,int val){
+     Node* n=new Node(val);
+     Node* temp=head;
+     head=n;
+     head->next=temp;
+ }
+
 void printlist(Node* head){
     while(head!=NULL){
         cout<<head->data<<" ";
@@ -37,10 +44,11 @@ void printlist(Node* head){
 
 int main() {
     //head pointer is assigned the memory address of the newly created node object. 
-    Node* head=new Node(4);
+    Node* head=new Node(4); 
     insertAtTail(head,5);
     insertAtTail(head,6);
     insertAtTail(head,7);
+    insertAtHead(head,10);
     printlist(head);
     
 }
