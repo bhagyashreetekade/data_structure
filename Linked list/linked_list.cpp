@@ -1,5 +1,6 @@
 // Online C++ compiler to run C++ program online
 #include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
 class Node{
@@ -63,6 +64,18 @@ bool search(Node* head,int key){
     return false;
 }
 
+Node* convertArr2LLL(vector<int>&arr){
+    Node* head=new Node(arr[0]);
+    Node* mover=head;
+    
+    for(int i=1;i<arr.size();i++){
+        Node* temp=new Node(arr[i]);
+        mover->next=temp;
+        mover=temp;
+    }
+    return head;
+}
+
 void printlist(Node* head){
     while(head!=NULL){
         cout<<head->data<<" ";
@@ -81,6 +94,11 @@ int main() {
     cout<<endl;
     deletion(head,6);
     printlist(head);
-    cout<<endl<<"Element is " <<search(head,5);
+    cout<<endl<<"Element is " <<search(head,5)<<endl;
+    
+    //want to convert array to linked list
+    vector<int>arr={2,1,3,8};
+    Node* head_of_vec=convertArr2LLL(arr);
+    cout<<"Head of vector converted to linked list is "<<head_of_vec->data<<endl;
     
 }
