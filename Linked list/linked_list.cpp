@@ -1,4 +1,4 @@
-// Online C++ compiler to run C++ program online
+
 #include <iostream>
 using namespace std;
 
@@ -30,10 +30,28 @@ void insertAtTail(Node* &head,int val){
 
  void insertAtHead(Node* &head,int val){
      Node* n=new Node(val);
-     Node* temp=head;
+     n->next=head;
      head=n;
-     head->next=temp;
  }
+
+void deletion(Node* &head,int val){
+    Node* n=new Node(val);
+    Node* temp=head;
+    
+    //if value of head is that value
+    if(head->data==val){
+        head=head->next;
+        delete temp;
+    }
+    else{
+        while(temp->next->data!=val){
+            temp=temp->next;
+        }
+        Node* t=temp->next;
+        temp->next=temp->next->next;
+        delete t;
+    }
+}
 
 void printlist(Node* head){
     while(head!=NULL){
@@ -49,6 +67,9 @@ int main() {
     insertAtTail(head,6);
     insertAtTail(head,7);
     insertAtHead(head,10);
+    printlist(head);
+    cout<<endl;
+    deletion(head,6);
     printlist(head);
     
 }
