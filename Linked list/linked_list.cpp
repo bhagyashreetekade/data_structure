@@ -1,4 +1,4 @@
-
+// Online C++ compiler to run C++ program online
 #include <iostream>
 using namespace std;
 
@@ -53,6 +53,16 @@ void deletion(Node* &head,int val){
     }
 }
 
+bool search(Node* head,int key){
+    while(head->next!=NULL){
+        if(head->data==key){
+            return true;
+        }
+        head=head->next;
+    }
+    return false;
+}
+
 void printlist(Node* head){
     while(head!=NULL){
         cout<<head->data<<" ";
@@ -71,5 +81,6 @@ int main() {
     cout<<endl;
     deletion(head,6);
     printlist(head);
+    cout<<endl<<"Element is " <<search(head,5);
     
 }
