@@ -36,7 +36,7 @@ void insertAtTail(Node* &head,int val){
  }
 
 void deletion(Node* &head,int val){
-    Node* n=new Node(val);
+  
     Node* temp=head;
     
     //if value of head is that value
