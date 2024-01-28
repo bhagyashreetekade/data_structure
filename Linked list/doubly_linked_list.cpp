@@ -50,10 +50,35 @@ void insertAtTail(node* &head,int val){
 
 void insertAtHead(node* &head,int val){
     node* n=new node(val);
-    node* temp=head;
-    n->next=temp;
-    head=n;
-    temp->prev=n;
+	n->next=head;
+	if(head!=NULL){
+		head->prev=n;
+	}
+	head=n;
+}
+
+void deletion(node* head,int val){
+     node* temp = head;
+    if (head->data == val) {
+        head = head->next;
+        if (head != NULL) {
+            head->prev = NULL;
+        }
+        delete temp;
+    } else {
+        while (temp != NULL && temp->data != val) {
+            temp = temp->next;
+        }
+        if (temp != NULL) {
+            if (temp->prev != NULL) {
+                temp->prev->next = temp->next;
+            }
+            if (temp->next != NULL) {
+                temp->next->prev = temp->prev;
+            }
+            delete temp;
+        }
+    }
 }
 
 void printlist(node* head){
@@ -74,5 +99,6 @@ int main() {
     insertAtTail(n,12);
     insertAtTail(n,13);
     insertAtHead(n,10);
+    deletion(n,13);
     printlist(n);
 }
